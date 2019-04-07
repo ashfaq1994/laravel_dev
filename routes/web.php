@@ -29,3 +29,7 @@ $node->save(); // Saved as root
 
 Route::get('/save','CategoryController@index');
 Route::get('/product','CategoryController@product');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
