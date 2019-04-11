@@ -10,7 +10,7 @@ class Question extends Model
 	
     public function user()
     {
-    	return $this->belongTo(User::class);
+    	return $this->belongsTo(User::class);
 
     	// $Question:find(1)
     	// $Question->user->email;
@@ -20,6 +20,17 @@ class Question extends Model
     {
        $this->attributes['title'] = $value;
        $this->attributes['slug'] = str_slug($value);
+    }
+
+    public function getUrlAttribute()
+    {
+        // return route('questions.show', $this->id);
+        return "#";
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 
 
