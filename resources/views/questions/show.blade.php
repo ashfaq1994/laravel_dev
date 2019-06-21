@@ -20,5 +20,36 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+              <h4 class="card-title">{{ $question->answers_count . " " . str_plural('Answer', $question->answers_count) }}</h4>
+               <hr>
+                @foreach ($question->answers as $answers)
+                    <div class="media">
+                        <div class="media-body">
+                            {!! $answers->body_html !!}
+                            <div class="float-right">
+                                <span class="text-muted"> Answered  {{ $answers->created_date }} </span>
+                                <div class="media">
+                                    <a href=" {{ $answers->user->url }}" class="pr-2">
+                                     <img src=" {{ $answers->user->avatar }} " alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="{{ $answers->user->url }}">
+                                         {{ $answers->user->name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                @endforeach
+              </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
